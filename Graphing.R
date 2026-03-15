@@ -27,7 +27,7 @@ p2 <- ggplot(data_clean, aes(x = Zeta_Potential, y = Tumor)) +
   geom_smooth(method = "lm", se = FALSE) +
   labs(title = "Zeta Potential vs Drug Accumulation (Tumor)",
        x = "Zeta Potential",
-       y = "Drug Accumulation") +
+       y = "Drug Accumulation (Tumor)") +
   theme_minimal()
 
 # 3. Plot comparing nanoparticle size vs drug accumulation
@@ -36,7 +36,7 @@ p3 <- ggplot(data_clean, aes(x = Size_numeric, y = Tumor)) +
   geom_smooth(method = "lm", se = FALSE) +
   labs(title = "Nanoparticle Size vs Drug Accumulation (Tumor)",
        x = "Nanoparticle Size (nm)",
-       y = "Drug Accumulation") +
+       y = "Drug Accumulation (Tumor)") +
   theme_minimal()
 
 # For Fun Histogram (bell curve approximation)

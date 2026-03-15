@@ -2,7 +2,7 @@
 library(tidyverse)
 
 # Load the cleaned data
-data <- read.csv("clean_youreka_set.csv")
+data <- read.csv("clean_youreka_set.csv", na.strings = character(0))
 
 # Fill down the nanoparticle properties
 data_filled <- data |>
@@ -33,7 +33,8 @@ data_filtered <- data_filled |>
 data_final <- data_filtered |>
   group_by(Core_Material, Size, Zeta_Potential, Tumor_Size) |>
   filter(Time_Point == max(Time_Point, na.rm = TRUE)) |>
-  ungroup()
+  ungroup() |>
+  filter(!if_any(everything(), ~ . == "NA"))
 
 # Save the filtered data to a new CSV
 write.csv(data_final, "filtered_youreka_set.csv", row.names = FALSE)
